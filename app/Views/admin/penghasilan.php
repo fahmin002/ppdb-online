@@ -5,7 +5,7 @@
     <!-- Header Section with improved styling -->
     <div class="row mt-4 mb-3">
       <div class="col-md-8">
-        <h1 class="fw-bold text-primary"><i class="fa-solid fa-person-praying"></i>Halaman penghasilan</h1>
+        <h1 class="fw-bold text-primary"><i class="fa-solid fa-money-check-dollar"></i>Halaman penghasilan</h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin" class="text-decoration-none"><i class="fas fa-home me-1"></i>Dashboard</a></li>
@@ -58,13 +58,8 @@
                   <td>
                     <div class="d-flex justify-content-center gap-2">
                       <!-- Tombol Edit -->
-                      <button class="btn btn-sm btn-warning edit-button"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editModal"
-                        data-id="<?= $d['id']; ?>"
-                        data-penghasilan="<?= $d['penghasilan']; ?>"
-                        title="Edit">
-                        <i class="fas fa-edit"></i>
+                      <button onclick="editPenghasilan(<?= $d['id'] ?>, '<?= $d['penghasilan'] ?>')" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i>
                       </button>
 
                       <!-- Tombol Hapus -->
@@ -86,59 +81,70 @@
   </div>
 </main>
 
+<!-- Add Job Modal -->
 <div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <!-- Form Dibuka Disini -->
-    <form action="/penghasilan/save" method="post">
-      <?= csrf_field(); ?>
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="addJobModalLabel"><i class="fas fa-plus-circle me-2"></i>Tambah penghasilan Baru</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addJobModalLabel"><i class="fa-solid fa-person-praying me-2"></i>Tambah Penghasilan</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/penghasilan/save" method="post">
         <div class="modal-body">
           <div class="mb-3">
-            <label for="jobName" class="form-label">Nama penghasilan</label>
-            <input type="text" class="form-control" name="penghasilan" id="jobName" placeholder="Masukkan nama penghasilan" required>
+            <label for="penghasilan" class="form-label">Asal Penghasilan</label>
+            <input type="text" class="form-control" id="penghasilan" name="penghasilan" required>
           </div>
-        </div> <!-- Penutupan modal-body -->
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
           <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
-      </div>
-    </form> <!-- Penutupan Form -->
-  </div> <!-- Penutupan modal-dialog -->
+      </form>
+    </div>
+  </div>
 </div>
 
-<!-- Modal untuk Tambah Pekerjaan -->
+<!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form method="post" id="editForm" action="/penghasilan/update/<?= $d['id']; ?>">
-      <?= csrf_field(); ?>
-      <div class="modal-content">
-        <div class="modal-header bg-warning text-white">
-          <h5 class="modal-title" id="editModalLabel">Edit penghasilan</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="editModalLabel"><i class="fas fa-edit me-2"></i>Edit Penghasilan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="" method="post"> <!-- Form action akan diupdate oleh JavaScript -->
         <div class="modal-body">
+          <input type="hidden" name="id" id="edit_id"> <!-- Input hidden untuk id -->
           <div class="mb-3">
-            <label for="itemName" class="form-label">Nama penghasilan</label>
-            <input type="text" class="form-control" id="itemName" name="penghasilan" placeholder="Silahkan ubah nama penghasilan" required>
+            <label for="edit_penghasilan" class="form-label">Asal Penghasilan</label>
+            <input type="text" class="form-control" id="edit_penghasilan" name="penghasilan" required>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+          <button type="submit" class="btn btn-warning">Update</button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 
+<!-- JavaScript -->
+<script>
+  function editPenghasilan(id, penghasilan) {
+    // Isi nilai id dan penghasilan ke modal
+    document.getElementById('edit_id').value = id;
+    document.getElementById('edit_penghasilan').value = penghasilan;
 
+    // Update form action dengan id yang sesuai
+    document.querySelector('#editModal form').action = `/penghasilan/update/${id}`;
 
-<!-- Script untuk inisialisasi tooltip -->
+    // Tampilkan modal
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+  }
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Inisialisasi tooltip Bootstrap 5
@@ -165,47 +171,6 @@
         text: "<?= implode(', ', session()->getFlashdata('errors')); ?>",
       });
     <?php endif; ?>
-  });
-</script>
-
-<script>
-  const editButton = document.querySelectorAll('.edit-button');
-  editButton.forEach(function(button) {
-    button.addEventListener('click', function() {
-      const id = editButton.getAttribute('data-id');
-      const penghasilan = editButton.getAttribute('data-penghasilan');
-      const modal = document.getElementById('editForm');
-      modal.setAttribute('action', `/penghasilan/update/${id}`)
-    })
-  })
-</script>
-<script>
-  $(document).ready(function() {
-    $('#editModal').on('bs.modal.open', function() {
-      var id = $(this).data('id');
-      var penghasilan = $(this).data('penghasilan');
-    })
-    // Event listener untuk modal edit penghasilan
-    $('#editModal').on('bs.modal.open', function(event) {
-      var button = $(event.relatedTarget); // Tombol yang diklik
-
-      if (button.length === 0) {
-        console.error("Tombol tidak ditemukan!");
-        return;
-      }
-
-      console.log(button); // Debugging: cek apakah tombol terdeteksi
-
-      var id = button.data('id'); // Ambil data-id
-
-      var penghasilan = button.data('penghasilan'); // Ambil data-penghasilan
-
-      console.log("ID:", id, "penghasilan:", penghasilan); // Debugging: cek apakah data terbaca
-
-      var modal = $(this);
-      modal.find('.modal-body #itemName').val(penghasilan); // Isi input field
-      modal.find('#editForm').attr('action', '/penghasilan/update/' + id); // Set action form
-    });
   });
 </script>
 

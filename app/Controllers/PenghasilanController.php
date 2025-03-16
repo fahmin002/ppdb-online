@@ -50,17 +50,37 @@ class PenghasilanController extends BaseController
         return redirect()->to('/admin/penghasilan');
     }
 
+    public function edit($id)
+{
+    $data = [
+        'penghasilan' => $this->penghasilanModel->find($id),
+    ];
+    return view('admin/edit_penghasilan', $data);
+}
+
     public function update($id)
     {
+        // Validasi data
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'penghasilan' => 'required',
+        ]);
+
+        if ($validation->withRequest($this->request)->run() === false) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
+        // Update data
         $penghasilan = $this->request->getPost('penghasilan');
         $this->penghasilanModel->update($id, [
             'penghasilan' => $penghasilan,
         ]);
-        session()->setFlashdata('success', 'penghasilan berhasil diupdate.');
+
+        session()->setFlashdata('success', 'Penghasilan berhasil diupdate.');
         return redirect()->to('/admin/penghasilan');
     }
 
-    public function delete($id) 
+    public function delete($id)
     {
         $this->penghasilanModel->delete($id);
         session()->setFlashdata('success', 'penghasilan berhasil dihapus.');

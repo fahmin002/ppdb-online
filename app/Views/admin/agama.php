@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <!-- Card with improved styling -->
-    <div class="card shadow-sm mb-4 border-0 rounded-3">
+        <!-- Card with improved styling -->
+        <div class="card shadow-sm mb-4 border-0 rounded-3">
       <div class="card-header bg-light py-3">
         <div class="d-flex justify-content-between align-items-center">
           <div>
@@ -58,13 +58,8 @@
                   <td>
                     <div class="d-flex justify-content-center gap-2">
                       <!-- Tombol Edit -->
-                      <button class="btn btn-sm btn-warning"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editModal"
-                        data-id="<?= $d['id']; ?>"
-                        data-pekerjaan="<?= $d['agama']; ?>"
-                        title="Edit">
-                        <i class="fas fa-edit"></i>
+                      <button onclick="editagama(<?= $d['id'] ?>, '<?= $d['agama'] ?>')" class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i>
                       </button>
 
                       <!-- Tombol Hapus -->
@@ -86,59 +81,70 @@
   </div>
 </main>
 
+<!-- Add Job Modal -->
 <div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <!-- Form Dibuka Disini -->
-    <form action="/agama/save" method="post">
-      <?= csrf_field(); ?>
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="addJobModalLabel"><i class="fas fa-plus-circle me-2"></i>Tambah Agama Baru</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addJobModalLabel"><i class="fa-solid fa-person-praying me-2"></i>Tambah agama</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/agama/save" method="post">
         <div class="modal-body">
           <div class="mb-3">
-            <label for="jobName" class="form-label">Nama Agama</label>
-            <input type="text" class="form-control" name="agama" id="jobName" placeholder="Masukkan nama Agama" required>
+            <label for="agama" class="form-label">Asal agama</label>
+            <input type="text" class="form-control" id="agama" name="agama" required>
           </div>
-        </div> <!-- Penutupan modal-body -->
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
           <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
-      </div>
-    </form> <!-- Penutupan Form -->
-  </div> <!-- Penutupan modal-dialog -->
-</div> 
+      </form>
+    </div>
+  </div>
+</div>
 
-<!-- Modal untuk Tambah Pekerjaan -->
+<!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form method="post" action="/agama/update/<?= $d['id']; ?>">
-      <?= csrf_field(); ?>
-      <div class="modal-content">
-        <div class="modal-header bg-warning text-white">
-          <h5 class="modal-title" id="editModalLabel">Edit agama</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="editModalLabel"><i class="fas fa-edit me-2"></i>Edit agama</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="" method="post"> <!-- Form action akan diupdate oleh JavaScript -->
         <div class="modal-body">
+          <input type="hidden" name="id" id="edit_id"> <!-- Input hidden untuk id -->
           <div class="mb-3">
-            <label for="itemName" class="form-label">Nama agama</label>
-            <input type="text" class="form-control" id="itemName" name="agama" placeholder="Silahkan ubah nama agama" required>
+            <label for="edit_agama" class="form-label">Asal agama</label>
+            <input type="text" class="form-control" id="edit_agama" name="agama" required>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+          <button type="submit" class="btn btn-warning">Update</button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 
+<!-- JavaScript -->
+<script>
+  function editagama(id, agama) {
+    // Isi nilai id dan agama ke modal
+    document.getElementById('edit_id').value = id;
+    document.getElementById('edit_agama').value = agama;
 
+    // Update form action dengan id yang sesuai
+    document.querySelector('#editModal form').action = `/agama/update/${id}`;
 
-<!-- Script untuk inisialisasi tooltip -->
+    // Tampilkan modal
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+  }
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Inisialisasi tooltip Bootstrap 5
@@ -168,29 +174,4 @@
   });
 </script>
 
-<script>
-  $(document).ready(function() {
-    // Event listener untuk modal edit agama
-    $('#editModal').on('show.bs.modal', function(event) {
-      var button = $(event.relatedTarget); // Tombol yang diklik
-
-      if (button.length === 0) {
-        console.error("Tombol tidak ditemukan!");
-        return;
-      }
-
-      console.log(button); // Debugging: cek apakah tombol terdeteksi
-
-      var id = button.data('id'); // Ambil data-id
-      var agama = button.data('agama'); // Ambil data-agama
-
-      console.log("ID:", id, "agama:", agama); // Debugging: cek apakah data terbaca
-
-      var modal = $(this);
-      modal.find('.modal-body #itemName').attr(agama); // Isi input field
-      modal.find('form').attr('action', '/agama/update/' + id); // Set action form
-    });
-  });
-</script>
-
-<?= $this->endSection(); ?>
+   <?= $this->endSection(); ?>

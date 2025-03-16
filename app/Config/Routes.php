@@ -8,19 +8,20 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // // Admin Login
-$routes->get('/auth/login', 'UserController::getlogin');
-$routes->post('/auth/login', 'UserController::postlogin');
-$routes->get('/auth/logout', 'UserController::logout');
+$routes->get('/auth/login', 'LoginController::getlogin', ['filter' => 'LoginFilter']);
+$routes->post('/auth/login', 'LoginController::postlogin');
+$routes->get('/auth/logout', 'LoginController::logout', ['filter' => 'GuestFilter']);
 // // User Login / register
-// $routes->get('/login', 'Auth::login');
-// $routes->post('/login', 'Auth::processLogin');
-// $routes->get('/register', 'Auth::register');
-// $routes->post('/register', 'Auth::processRegister');
+$routes->get('/login', 'LoginController::userGetlogin', ['filter' => 'LoginFilter']);
+$routes->post('/login', 'LoginController::userPostLogin');
+$routes->get('/register', 'LoginController::userGetRegister', ['filter' => 'LoginFilter']);
+$routes->post('/register', 'LoginController::userPostRegister');
+$routes->get('/logout', 'LoginController::logout');
 
 // // User Lengkapi dokumen
-// $routes->get('/dashboard', 'Siswa::index', ['filter' => 'auth']);
-// $routes->get('/formulir', 'Siswa::formulir', ['filter' => 'auth']);
-// $routes->post('/formulir', 'Siswa::submitFormulir');
+$routes->get('/dashboard', 'SiswaController::index');
+$routes->get('/aboutme', 'SiswaController::formulir', ['filter' => 'UserFilter']);
+$routes->post('/aboutme', 'SiswaController::submitFormulir', ['filter' => 'UserFilter']);
 
 // // Admin Dashboard
 $routes->get('/admin', 'Admin::index', ['filter' => 'UserFilter']);
@@ -32,10 +33,10 @@ $routes->post('/pekerjaan/update/(:segment)', 'PekerjaanController::update/$1', 
 $routes->delete('/pekerjaan/delete/(:num)', 'PekerjaanController::delete/$1',  ['filter' => 'UserFilter']);
 
 // Pendidikan
-$routes->get('/admin/pendidikan', 'pendidikanController::index', ['filter' => 'UserFilter']);
-$routes->post('/pendidikan/save', 'pendidikanController::save', ['filter' => 'UserFilter']);
-$routes->post('/pendidikan/update/(:segment)', 'pendidikanController::update/$1',  ['filter' => 'UserFilter']);
-$routes->delete('/pendidikan/delete/(:num)', 'pendidikanController::delete/$1',  ['filter' => 'UserFilter']);
+$routes->get('/admin/pendidikan', 'PendidikanController::index', ['filter' => 'UserFilter']);
+$routes->post('/pendidikan/save', 'PendidikanController::save', ['filter' => 'UserFilter']);
+$routes->post('/pendidikan/update/(:segment)', 'PendidikanController::update/$1',  ['filter' => 'UserFilter']);
+$routes->delete('/pendidikan/delete/(:num)', 'PendidikanController::delete/$1',  ['filter' => 'UserFilter']);
 
 // Agama
 $routes->get('/admin/agama', 'AgamaController::index', ['filter' => 'UserFilter']);
@@ -46,5 +47,27 @@ $routes->delete('/agama/delete/(:num)', 'AgamaController::delete/$1',  ['filter'
 // Penghasilan
 $routes->get('/admin/penghasilan', 'PenghasilanController::index', ['filter' => 'UserFilter']);
 $routes->post('/penghasilan/save', 'PenghasilanController::save', ['filter' => 'UserFilter']);
-$routes->post('/penghasilan/update/(:segment)', 'PenghasilanController::update/$1',  ['filter' => 'UserFilter']);
+$routes->post('/penghasilan/update/(:segment)', 'PenghasilanController::update/$1', ['filter' => 'UserFilter']);
 $routes->delete('/penghasilan/delete/(:num)', 'PenghasilanController::delete/$1',  ['filter' => 'UserFilter']);
+
+// ADD User
+$routes->get('/admin/adduser', 'UserController::index', ['filter' => 'UserFilter']);
+$routes->get('/admin/detailuser/(:segment)', 'AddUserController::detail/$1', ['filter' => 'UserFilter']);
+
+$routes->post('/admin/adduser/store', 'UserController::store', ['filter' => 'UserFilter']);
+$routes->put('/User/update/(:num)', 'UserController::update/$1');
+$routes->delete('/user/delete/(:num)', 'UserController::delete/$1',  ['filter' => 'UserFilter']);
+
+// Lampiran
+$routes->get('/admin/lampiran', 'LampiranController::index', ['filter' => 'UserFilter']);
+$routes->post('/lampiran/upload', 'LampiranController::upload', ['filter' => 'UserFilter']);
+$routes->put('/lampiran/update/(:num)', 'LampiranController::update/$1');
+$routes->delete('/lampiran/delete/(:num)', 'LampiranController::delete/$1', ['filter' => 'UserFilter']);
+
+// // User
+$routes->get('/tentang', 'Home::tentang');
+$routes->get('/prestasi', 'Home::prestasi');
+$routes->get('/kegiatan', 'Home::kegiatan');
+$routes->get('/galeri', 'Home::galeri');
+$routes->get('/jadwal', 'Home::jadwal');
+$routes->get('/kontak', 'Home::kontak');

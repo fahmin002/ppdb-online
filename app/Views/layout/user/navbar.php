@@ -1,28 +1,29 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="#">PPDB SEKOLAH</a>
+    <img src="/img/logo.png" alt="Logo" width="50" height="50">  
+    <a class="navbar-brand display-6 display-md-3" href="#">PPDB SMP PGRI 1 Puring</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'beranda') ? 'active' : '' ?>" href="/" id="">Beranda</a>
+          <a class="nav-link <?= ($page == 'home') ? 'active' : '' ?>" href="/" id="">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'tentang') ? 'active' : '' ?>" href="/user/tentang">Profile</a>
+          <a class="nav-link <?= ($page == 'tentang') ? 'active' : '' ?>" href="/tentang">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'kegiatan') ? 'active' : '' ?>" href="/user/kegiatan">Ekstrakurikuler</a>
+          <a class="nav-link <?= ($page == 'prestasi') ? 'active' : '' ?>" href="/prestasi">Prestasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'galeri') ? 'active' : '' ?>" href="/user/galeri">Gallery</a>
+          <a class="nav-link <?= ($page == 'galeri') ? 'active' : '' ?>" href="/galeri">Gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'jadwal') ? 'active' : '' ?>" href="/user/jadwal">PPDB 2025</a>
+          <a class="nav-link <?= ($page == 'jadwal') ? 'active' : '' ?>" href="/jadwal">PPDB 2025</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'kontak') ? 'active' : '' ?>" href="/user/kontak">Kontak</a>
+          <a class="nav-link <?= ($page == 'kontak') ? 'active' : '' ?>" href="/kontak">Kontak</a>
         </li>
       </ul>
       <?php if (session()->has('logged_in') && session('logged_in')): ?>

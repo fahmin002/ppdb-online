@@ -27,7 +27,11 @@ class UserFilter implements FilterInterface
     {
         if (!session()->has('logged_in') || session()->get('logged_in') === FALSE) {
             session()->setFlashdata('errors', ['msg' => 'Silahkan login terlebih dahulu']);
-            return redirect()->to('/auth/login');
+            if(session()->get('level') == 'admin') {
+                return redirect()->to('/auth/login');
+            } else {
+                return redirect()->to('/login');
+            }
         }
     }
 

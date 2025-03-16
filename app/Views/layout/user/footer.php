@@ -3,8 +3,8 @@
      <div class="container">
          <div class="row">
              <div class="col-lg-4 mb-4 mb-lg-0">
-                 <h5>Sekolah Modern</h5>
-                 <p>Membentuk generasi unggul yang siap menghadapi tantangan global dengan bekal karakter, pengetahuan, dan keterampilan.</p>
+                 <h5>SMP PGRI 1 Puring</h5>
+                 <p>Where Tomorrow's Leaders Come Together</p>
                  <div class="mt-3">
                      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -42,7 +42,7 @@
              </div>
          </div>
          <div class="copyright">
-             <p>&copy; 2025 Sekolah Modern - PPDB. All Rights Reserved.</p>
+             <p>&copy; 2025 SMP PGRI 1 Puring - PPDB. All Rights Reserved.</p>
          </div>
      </div>
  </footer>

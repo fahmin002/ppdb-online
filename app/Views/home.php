@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-4">Penerimaan Peserta Didik Baru Tahun 2025</h1>
+                    <h1 class="display-4 fw-bold mb-4">Where Tomorrow's Leaders Come Together</h1>
                     <p class="lead mb-4">Jadilah bagian dari keluarga besar Sekolah Modern untuk masa depan cemerlang. Pendaftaran dibuka secara online dan offline.</p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="/register" class="btn btn-light btn-lg">Daftar Sekarang</a>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://watermark.lovepik.com/photo/20211130/large/lovepik-junior-high-school-students-picture_501273259.jpg" class="img-fluid rounded-3 shadow-lg">
+                    <img src="https://smppgri1puring.sch.id/media_library/posts/large/5d95c73f71b5d34009213d7af4547a49.jpg" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
         </div>
@@ -33,62 +33,7 @@
                 <a href="#" class="text-primary fw-bold d-none d-md-block">Lihat Detail <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- Tentang Sekolah Section -->
-    <section id="tentang" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Tentang Sekolah Modern</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/75/bb/83/stanford-university.jpg?w=1200&h=1200&s=1" alt="placeholder" class="img-fluid rounded-3 shadow">
-                </div>
-                <div class="col-lg-6">
-                    <p class="mb-4">Sekolah Modern merupakan lembaga pendidikan yang berdiri sejak tahun 2005 dengan visi menjadi institusi pendidikan unggulan yang menghasilkan generasi berkarakter, berintegritas, dan berdaya saing global.</p>
-                    <p class="mb-4">Dengan fasilitas modern dan tenaga pengajar berkualitas, kami berkomitmen memberikan pendidikan terbaik untuk mengembangkan potensi akademik dan non-akademik setiap siswa.</p>
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-graduation-cap text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-0">500+</h5>
-                                    <p class="mb-0 text-secondary">Lulusan</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-trophy text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-0">150+</h5>
-                                    <p class="mb-0 text-secondary">Prestasi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-user-tie text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-0">50+</h5>
-                                    <p class="mb-0 text-secondary">Guru</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-building text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-0">30+</h5>
-                                    <p class="mb-0 text-secondary">Ruang Kelas</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-4">Selengkapnya</a>
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
 
     <!-- Kegiatan Sekolah Section -->
    
@@ -148,7 +93,7 @@
     </section>
 
     <!-- Jadwal PPDB Section -->
-    <section id="jadwal" class="py-5 bg-light">
+    <!-- <section id="jadwal" class="py-5 bg-light">
         <div class="container">
             <h2 class="section-title">Jadwal PPDB 2025</h2>
             <div class="row">
@@ -193,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Daftar Section -->
     <section id="daftar" class="py-5">
@@ -377,6 +322,133 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="story" class="story">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="zoom-in" data-aos-duration="2000"
+                data-aos-easing="ease-in-out">
+                <div class="col-md-8 col-md-10 text-center">
+                    <h2> Evolusi AI di Bidang Kesehatan</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image" style="background-image: url(asets/OIG1.jpeg);"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <h3> Pencitraan Medis dan Diagnostik </h3>
+                                    <span> 2020-2022</span>
+                                </div>
+                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <p>Peristiwa: AI mulai banyak digunakan dalam analisis gambar medis (X-ray,
+                                        MRI, CT
+                                        scan), membantu dokter mendeteksi kelainan dengan lebih cepat dan
+                                        akurat.
+                                        Dampak: Deteksi dini penyakit seperti kanker meningkat secara
+                                        signifikan,
+                                        memperbaiki hasil pengobatan.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image" style="background-image: url(asets/OIG2.jpeg);">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <h3> Penemuan dan Pengembangan Obat </h3>
+                                    <span> 2021-2023</span>
+                                </div>
+                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <p>Peristiwa: AI digunakan dalam proses penemuan obat, mempercepat pengujian
+                                        senyawa
+                                        dan personalisasi pengobatan berdasarkan profil genetik pasien.
+                                        Dampak: Waktu yang dibutuhkan untuk menemukan obat baru berkurang, dan
+                                        pengobatan yang lebih efektif bagi individu mulai diterapkan.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image" style="background-image: url(asets/OIG4.jpeg);">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <h3> Teknologi Wearable </h3>
+                                    <span> 2021-2024</span>
+                                </div>
+                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <p>Peristiwa: Perangkat wearable yang terintegrasi dengan AI menjadi
+                                        populer,
+                                        memantau tanda-tanda vital seperti detak jantung dan kadar glukosa
+                                        secara
+                                        real-time.
+                                        Dampak: Manajemen penyakit kronis menjadi lebih mudah, dengan pemantauan
+                                        yang
+                                        terus-menerus dan respons yang lebih cepat terhadap perubahan kondisi
+                                        kesehatan.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image" style="background-image: url(asets/);">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <h3> Bedah Robotik </h3>
+                                    <span> 2020-2023</span>
+                                </div>
+                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <p>Peristiwa: Robot bedah yang didukung oleh AI mulai banyak digunakan,
+                                        menawarkan
+                                        tingkat presisi yang lebih tinggi dalam operasi dan mempercepat
+                                        pemulihan
+                                        pasien.
+                                        Dampak: Risiko komplikasi pasca operasi berkurang, dengan hasil operasi
+                                        yang
+                                        lebih baik.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image" style="background-image: url(asets/OIG5.jpeg);">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <h3> Analitik Prediktif </h3>
+                                    <span> 2022-2024</span>
+                                </div>
+                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
+                                    data-aos-easing="ease-in-out" data-aos-delay="600">
+                                    <p>Peristiwa: AI mulai digunakan untuk menganalisis data pasien dan
+                                        memprediksi
+                                        kemungkinan penyakit tertentu, memungkinkan tindakan pencegahan.
+                                        Dampak: Rumah sakit dapat mengelola sumber daya dengan lebih efisien dan
+                                        mengurangi biaya operasional.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
