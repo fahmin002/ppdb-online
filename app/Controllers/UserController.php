@@ -4,16 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Models\AddUserModel;
+use App\Models\UserModel;
 
 
-class AddUserController extends BaseController
+class UserController extends BaseController
 {
     protected $addusermodel;
 
     public function __construct()
     {
-        $this->addusermodel = new AddUserModel();
+        $this->addusermodel = new UserModel();
     }
 
     public function index()
