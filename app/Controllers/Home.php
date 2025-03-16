@@ -11,4 +11,40 @@ class Home extends BaseController
         ];
         return view('home', $data);
     }
+    public function tentang()
+    {
+        $data = [
+            "page" => "tentang"
+        ];
+        return view('tentang', $data);
+    }
+
+    public function prestasi()
+    {
+        $data = [
+            "page" => "prestasi"
+        ];
+        return view('prestasi', $data);
+    }
+    public function galeri()
+    {
+        $data = [
+            "page" => "galeri"
+        ];
+        return view('galeri', $data);
+    }
+    public function jadwal()
+    {
+        $data = [
+            "page" => "jadwal"
+        ];
+        return view('jadwal', $data);
+    }
+    public function kontak()
+    {
+        $data = [
+            "page" => "kontak"
+        ];
+        return view('kontak', $data);
+    }
 }
