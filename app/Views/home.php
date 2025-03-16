@@ -93,7 +93,7 @@
     </section>
 
     <!-- Jadwal PPDB Section -->
-    <!-- <section id="jadwal" class="py-5 bg-light">
+    <section id="jadwal" class="py-5 bg-light">
         <div class="container">
             <h2 class="section-title">Jadwal PPDB 2025</h2>
             <div class="row">
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!-- Daftar Section -->
     <section id="daftar" class="py-5">
@@ -322,133 +322,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="story" class="story">
-        <div class="container">
-            <div class="row justify-content-center" data-aos="zoom-in" data-aos-duration="2000"
-                data-aos-easing="ease-in-out">
-                <div class="col-md-8 col-md-10 text-center">
-                    <h2> Evolusi AI di Bidang Kesehatan</h2>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image" style="background-image: url(asets/OIG1.jpeg);"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <h3> Pencitraan Medis dan Diagnostik </h3>
-                                    <span> 2020-2022</span>
-                                </div>
-                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <p>Peristiwa: AI mulai banyak digunakan dalam analisis gambar medis (X-ray,
-                                        MRI, CT
-                                        scan), membantu dokter mendeteksi kelainan dengan lebih cepat dan
-                                        akurat.
-                                        Dampak: Deteksi dini penyakit seperti kanker meningkat secara
-                                        signifikan,
-                                        memperbaiki hasil pengobatan.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image" style="background-image: url(asets/OIG2.jpeg);">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <h3> Penemuan dan Pengembangan Obat </h3>
-                                    <span> 2021-2023</span>
-                                </div>
-                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <p>Peristiwa: AI digunakan dalam proses penemuan obat, mempercepat pengujian
-                                        senyawa
-                                        dan personalisasi pengobatan berdasarkan profil genetik pasien.
-                                        Dampak: Waktu yang dibutuhkan untuk menemukan obat baru berkurang, dan
-                                        pengobatan yang lebih efektif bagi individu mulai diterapkan.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image" style="background-image: url(asets/OIG4.jpeg);">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <h3> Teknologi Wearable </h3>
-                                    <span> 2021-2024</span>
-                                </div>
-                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <p>Peristiwa: Perangkat wearable yang terintegrasi dengan AI menjadi
-                                        populer,
-                                        memantau tanda-tanda vital seperti detak jantung dan kadar glukosa
-                                        secara
-                                        real-time.
-                                        Dampak: Manajemen penyakit kronis menjadi lebih mudah, dengan pemantauan
-                                        yang
-                                        terus-menerus dan respons yang lebih cepat terhadap perubahan kondisi
-                                        kesehatan.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image" style="background-image: url(asets/);">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <h3> Bedah Robotik </h3>
-                                    <span> 2020-2023</span>
-                                </div>
-                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <p>Peristiwa: Robot bedah yang didukung oleh AI mulai banyak digunakan,
-                                        menawarkan
-                                        tingkat presisi yang lebih tinggi dalam operasi dan mempercepat
-                                        pemulihan
-                                        pasien.
-                                        Dampak: Risiko komplikasi pasca operasi berkurang, dengan hasil operasi
-                                        yang
-                                        lebih baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image" style="background-image: url(asets/OIG5.jpeg);">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <h3> Analitik Prediktif </h3>
-                                    <span> 2022-2024</span>
-                                </div>
-                                <div class="timeline-body" data-aos="zoom-in" data-aos-duration="2000"
-                                    data-aos-easing="ease-in-out" data-aos-delay="600">
-                                    <p>Peristiwa: AI mulai digunakan untuk menganalisis data pasien dan
-                                        memprediksi
-                                        kemungkinan penyakit tertentu, memungkinkan tindakan pencegahan.
-                                        Dampak: Rumah sakit dapat mengelola sumber daya dengan lebih efisien dan
-                                        mengurangi biaya operasional.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto mb-3 mb-md-0">
         <li class="nav-item">
           <a class="nav-link <?= ($page == 'home') ? 'active' : '' ?>" href="/" id="">Beranda</a>
         </li>
@@ -25,6 +25,11 @@
         <li class="nav-item">
           <a class="nav-link <?= ($page == 'kontak') ? 'active' : '' ?>" href="/kontak">Kontak</a>
         </li>
+        <?php if (session()->has('logged_in') && session('logged_in')): ?>
+          <li class="nav-item">
+            <a class="nav-link <?= ($page == 'dashboard') ? 'active' : '' ?>" href="/dashboard">Dashboard</a>
+          </li>
+        <?php endif; ?>
       </ul>
       <?php if (session()->has('logged_in') && session('logged_in')): ?>
         <a href="/logout" class="btn btn-danger ms-lg-3">Logout</a>

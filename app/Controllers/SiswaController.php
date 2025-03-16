@@ -9,6 +9,10 @@ class SiswaController extends BaseController
 {
     public function index()
     {
-        return view('user/dashboard');
+        $data = [
+            'title' => 'Dashboard',
+            'page' => 'dashboard',
+        ];
+        return view('user/dashboard', $data);
     }
 }
