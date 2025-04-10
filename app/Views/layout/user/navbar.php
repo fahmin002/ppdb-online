@@ -20,7 +20,7 @@
           <a class="nav-link <?= ($page == 'galeri') ? 'active' : '' ?>" href="/galeri">Gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($page == 'jadwal') ? 'active' : '' ?>" href="/jadwal">PPDB 2025</a>
+          <a class="nav-link <?= ($page == 'ppdb') ? 'active' : '' ?>" href="/ppdb">PPDB 2025</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?= ($page == 'kontak') ? 'active' : '' ?>" href="/kontak">Kontak</a>

@@ -74,9 +74,9 @@
             </a>
             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="login.html">Masuk</a>
-                <a class="nav-link" href="register.html">Diterima</a>
-                <a class="nav-link" href="password.html">Ditolak</a>
+                <a class="nav-link" href="/admin/pendaftaran/masuk">Masuk</a>
+                <a class="nav-link" href="/admin/pendaftaran/diterima">Diterima</a>
+                <a class="nav-link" href="/admin/pendaftaran/ditolak">Ditolak</a>
               </nav>
             </div>
             <!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
@@ -101,7 +101,7 @@
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
   <script src="/js/datatables-simple-demo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

@@ -1,11 +1,21 @@
 <?= $this->extend('layout/admin/template'); ?>
 <?= $this->section('content'); ?>
+<style>
+  .pdf {
+   color: blue;
+   font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+</style>
+
 <main>
   <div class="container-fluid px-4">
     <!-- Header Section with improved styling -->
     <div class="row mt-4 mb-3">
       <div class="col-md-8">
-        <h1 class="fw-bold text-primary"><i class="fa-solid fa-file-export"></i>Halaman Tambah lampiran</h1>
+        <h1 class="fw-bold text-primary"><i class="fa-solid fa-file-export"></i>Halaman Lampiran Siswa</h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/lampiran" class="text-decoration-none"><i class="fas fa-home me-1"></i>Dashboard</a></li>
@@ -13,11 +23,11 @@
           </ol>
         </nav>
       </div>
-      <div class="col-md-4 text-end">
+      <!-- <div class="col-md-4 text-end">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addJobModal">
-        <i class="fa-solid fa-file-export"></i>Tambah lampiran
+          <i class="fa-solid fa-file-export"></i>Tambah lampiran
         </button>
-      </div>
+      </div> -->
     </div>
 
     <!-- Card with improved styling -->
@@ -28,14 +38,14 @@
             <i class="fas fa-table text-primary me-1"></i>
             <span class="fw-bold">Tabel lampiran</span>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn btn-sm btn-outline-secondary me-2">
               <i class="fas fa-file-export me-1"></i> Export
             </button>
             <button class="btn btn-sm btn-outline-secondary">
               <i class="fas fa-print me-1"></i> Print
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="card-body">
@@ -45,11 +55,12 @@
             <thead class="table-light">
               <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">ID pendaftar</th>
-                <th class="text-center">Jenis Lampiran</th>
-                <th class="text-center">File Lampiran</th>
-                <th class="text-center">Keterangan</th>
-                <th class="text-center">Aksi</th>
+                <th class="text-center">Id Siswa</th> <!-- Tambahkan kolom Nama Siswa -->
+                <th class="text-center">No Pendaftaran</th> <!-- Tambahkan kolom Nama Siswa -->
+                <th class="text-center">Nama Siswa</th>
+                <th class="text-center">Lihat Lampiran</th>
+                <th class="text-center">Tanggal Daftar</th>
+                <th class="text-center">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -57,34 +68,16 @@
               foreach ($lampiran as $d) : ?>
                 <tr>
                   <td class="text-center"><?= $no++ ?></td>
-                  <td><?= $d['id_pendaftar']; ?></td>
-                  <td><?= $d['jenis_lampiran']; ?></td>
-                  <td><?= $d['file_lampiran']; ?></td>
-                  <td><?= $d['keterangan']; ?></td>
+                  <td><?= esc($d['id_siswa']); ?></td> <!-- Tampilkan nama siswa -->
+                  <td><?= esc($d['no_pendaftaran']); ?></td>
+                  <td><?= esc($d['nama_lengkap']); ?></td>
                   <td>
-                    <div class="d-flex justify-content-center gap-2">
-                      <!-- Tombol Edit -->
-                      <!-- Tombol Edit -->
-                      <button onclick="editlampiran(
-                    <?= $d['id_pendaftar']; ?>,
-                    '<?= esc($d['jenis_lampiran']); ?>',
-                    '<?= esc($d['file_lampiran']); ?>',
-                    '<?= esc($d['keterangan']); ?>'
-                  )" class="btn btn-warning btn-sm">
-                        <i class="fa fa-pencil"></i>
-                      </button>
-
-
-                      <!-- Tombol Hapus -->
-                      <form action="/lampiran/delete/<?= $d['id_lampiran']; ?>" method="post" class="d-inline">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" title="Hapus">
-                          <i class="fas fa-trash"></i>
-                        </button>
-                      </form>
-
-                    </div>
+                    <a href="<?= base_url('admin/lampiran/' . $d['id_siswa']) ?>" class="badge pdf">
+                      <i class="fas fa-eye me-1"></i>
+                    </a>
                   </td>
+                  <td><?= esc($d['tgl_pendaftaran']); ?></td>
+                  <td><?= esc($d['status_ppdb']); ?></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>
@@ -97,50 +90,61 @@
 
 <!-- Add Job Modal -->
 <div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="addJobModalLabel">
-                <i class="fa-solid fa-file-export"></i>Tambah Lampiran
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('lampiran/upload') ?>" method="post" enctype="multipart/form-data">
-                <?= csrf_field(); ?>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addJobModalLabel">
+          <i class="fa-solid fa-file-export"></i> Tambah Lampiran
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="<?= base_url('lampiran/upload') ?>" method="post" enctype="multipart/form-data">
+        <?= csrf_field(); ?>
+        <div class="modal-body">
+          <!-- Pilih Siswa -->
+          <div class="mb-3">
+            <label for="id_siswa" class="form-label">Pilih Siswa</label>
+            <select class="form-select" name="id_siswa" id="id_siswa" required>
+              <option value="">-- Pilih Siswa --</option>
+              <?php foreach ($lampiran as $s) : ?>
+                <option value="<?= $s['id_siswa']; ?>"><?= esc($s['nama_lengkap']); ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
 
-                <input type="hidden" name="id_pendaftar" value="<?= $d['id_pendaftar']; ?>">
+          <!-- Jenis Lampiran -->
+          <div class="mb-3">
+            <label for="jenis_lampiran" class="form-label">Jenis Lampiran</label>
+            <select class="form-select" name="jenis_lampiran" id="jenis_lampiran" required>
+              <option value="">-- Pilih Lampiran --</option>
+              <option value="Akta Kelahiran">Akta Kelahiran</option>
+              <option value="Kartu Keluarga">Kartu Keluarga</option>
+              <option value="Ijazah">Ijazah</option>
+              <option value="Foto 3x4">Foto 3x4</option>
+              <!-- Tambah sesuai kebutuhan -->
+            </select>
+          </div>
 
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="jenis_lampiran" class="form-label">Jenis Lampiran</label>
-                        <select class="form-select" name="jenis_lampiran" id="jenis_lampiran" required>
-                            <option value="">-- Pilih Lampiran --</option>
-                            <option value="Akta Kelahiran">Akta Kelahiran</option>
-                            <option value="Kartu Keluarga">Kartu Keluarga</option>
-                            <option value="Ijazah">Ijazah</option>
-                            <option value="Foto 3x4">Foto 3x4</option>
-                            <!-- Tambah sesuai kebutuhan -->
-                        </select>
-                    </div>
+          <!-- Upload File -->
+          <div class="mb-3">
+            <label for="file_lampiran" class="form-label">Upload File</label>
+            <input type="file" class="form-control" id="file_lampiran" name="file_lampiran" accept=".pdf,.jpg,.jpeg,.png" required>
+          </div>
 
-                    <div class="mb-3">
-                        <label for="file_lampiran" class="form-label">Upload File</label>
-                        <input type="file" class="form-control" id="file_lampiran" name="file_lampiran" accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Upload Lampiran</button>
-                </div>
-            </form>
+          <!-- Keterangan -->
+          <div class="mb-3">
+            <label for="keterangan" class="form-label">Keterangan</label>
+            <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
+          </div>
         </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary">Upload Lampiran</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 
 <!-- Modal Edit -->

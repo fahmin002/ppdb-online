@@ -1,6 +1,5 @@
-<?= $this->extend('layout/user/template'); ?>
+<?= $this->extend('layout/admin/template'); ?>
 <?= $this->section('content'); ?>
-
 <style>
     .profile-container {
         max-width: 1000px;
@@ -55,22 +54,6 @@
         background-color: #0056b3;
     }
 
-    .profile-download-btn {
-        position: absolute;
-        top: 10px;
-        right: 230px;
-        padding: 10px 20px;
-        background-color: rgba(40, 167, 70, 0.77);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    .profile-download-btn:hover {
-        background-color: rgba(40, 167, 70, 0.77);
-    }
 
     .profile-info {
         padding: 20px;
@@ -128,8 +111,7 @@
         }
     }
 </style>
-
-<div class="profile-container p-4">
+<div class="p-4">
     <div class="row">
         <!-- Foto Profil -->
         <div class="col-md-4 text-center">
@@ -150,9 +132,9 @@
                 <h6 class="mb-2">NISN: <?= $siswa['nisn'] ?? 'NISN' ?></h6>
                 <p class="mb-4">
                     Status:
-                    <?php if ($siswa['status_ppdb'] == 'verified'): ?>
+                    <?php if ($siswa['status_ppdb'] == 'Diterima'): ?>
                         <span class="status-badge bg-success text-white">Diterima</span>
-                    <?php elseif ($siswa['status_ppdb'] == 'rejected'): ?>
+                    <?php elseif ($siswa['status_ppdb'] == 'Ditolak'): ?>
                         <span class="status-badge bg-danger text-white">Ditolak</span>
                     <?php else: ?>
                         <span class="status-badge bg-warning">Proses</span>
@@ -216,26 +198,6 @@
         </div>
     </div>
     <!-- Button Edit Profile -->
-    <a href="/user/editeprofile/<?= $siswa['nisn']; ?>" class="profile-edit-btn mt-4 me-3">Lengkapi Data Diri</a>
-    <?php if ($siswa['status_ppdb'] == 'verified'): ?>
-        <a href="/user/buktipendaftaran/<?= $siswa['id_siswa']; ?>" class="profile-download-btn btn mt-4">Unduh Bukti</a>
-        <a href="#"
-            class="btn btn-warning mt-2"
-            target="_blank"
-            value="generatePdf/<?= $siswa['id_siswa']; ?>"
-            onclick="window.open('<?= site_url('user/buktipendaftaran/generatePdf/' . $siswa['id_siswa']); ?>', '_blank'); return false;">
-            Unduh Bukti Pendaftaran
-        </a>
-    <?php endif ?>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body text-center">
-                <a href="/user/uploads" class="btn btn-primary">Silahkan Upload Lampiran Untuk Melengkapi Data Diri Anda</a>
-            </div>
-        </div>
-    </div>
+    <a href="/admin/lampiran/<?= $siswa['id_siswa']; ?>" class="profile-edit-btn mt-4">Lihat Lampiran</a>
 </div>
 <?= $this->endSection(); ?>

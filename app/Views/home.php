@@ -144,8 +144,8 @@
     <section id="daftar" class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="section-title text-start">Persyaratan Pendaftaran</h2>
+                <div class="col-lg-6 text-center offset-lg-3">
+                    <h2 class="section-title text-center">Persyaratan Pendaftaran</h2>
                     <ul class="list-group list-group-flush mb-4">
                         <li class="list-group-item d-flex align-items-center">
                             <i class="fas fa-check-circle text-primary me-3"></i>
@@ -174,155 +174,7 @@
                     </ul>
                     <a href="#" class="btn btn-primary">Download Formulir</a>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <h3 class="card-title text-center mb-4">Form Pendaftaran Online</h3>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="tempat" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempat" placeholder="Masukkan tempat lahir">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="tanggal" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Jenis Kelamin</label>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki" value="Laki-laki">
-                                            <label class="form-check-label" for="laki">Laki-laki</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan">
-                                            <label class="form-check-label" for="perempuan">Perempuan</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat Lengkap</label>
-                                    <textarea class="form-control" id="alamat" rows="2" placeholder="Masukkan alamat lengkap"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="sekolah" class="form-label">Asal Sekolah</label>
-                                    <input type="text" class="form-control" id="sekolah" placeholder="Masukkan asal sekolah">
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="telp" class="form-label">No. Telepon</label>
-                                        <input type="tel" class="form-control" id="telp" placeholder="Masukkan no. telepon">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="orangtua" class="form-label">Nama Orang Tua/Wali</label>
-                                    <input type="text" class="form-control" id="orangtua" placeholder="Masukkan nama orang tua/wali">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telp_ortu" class="form-label">No. Telepon Orang Tua/Wali</label>
-                                    <input type="tel" class="form-control" id="telp_ortu" placeholder="Masukkan no. telepon orang tua/wali">
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="kontak" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Hubungi Kami</h2>
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Informasi Kontak</h4>
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-map-marker-alt text-primary fs-4 me-3 mt-1"></i>
-                                <div>
-                                    <h5 class="mb-1">Alamat</h5>
-                                    <p class="mb-0">Puring Wetan, Sitiadi, Kec. Puring, Kabupaten Kebumen, Jawa Tengah 54383</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-phone-alt text-primary fs-4 me-3 mt-1"></i>
-                                <div>
-                                    <h5 class="mb-1">Telepon</h5>
-                                    <p class="mb-0">(021) 1234-5678</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-envelope text-primary fs-4 me-3 mt-1"></i>
-                                <div>
-                                    <h5 class="mb-1">smppgri@gmail.com</h5>
-                                    <p class="mb-0">info@smppgri1puring.sch.id</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-clock text-primary fs-4 me-3 mt-1"></i>
-                                <div>
-                                    <h5 class="mb-1">Jam Operasional</h5>
-                                    <p class="mb-0">Senin - Jumat: 08.00 - 16.00</p>
-                                    <p class="mb-0">Sabtu: 08.00 - 12.00</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <h5 class="mb-2">Media Sosial</h5>
-                                <div class="d-flex">
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h4 class="card-title mb-4">Ada Pertanyaan?</h4>
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nama_kontak" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama_kontak" placeholder="Masukkan nama lengkap">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="email_kontak" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email_kontak" placeholder="Masukkan email">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="subject" class="form-label">Subjek</label>
-                                    <input type="text" class="form-control" id="subject" placeholder="Masukkan subjek">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pesan" class="form-label">Pesan</label>
-                                    <textarea class="form-control" id="pesan" rows="5" placeholder="Masukkan pesan atau pertanyaan Anda"></textarea>
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

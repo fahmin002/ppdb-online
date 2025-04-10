@@ -1,4 +1,9 @@
- <!-- Footer -->
+<style>
+    .social-icon {
+        color: white;
+    }
+</style>
+<!-- Footer -->
  <footer class="footer">
      <div class="container">
          <div class="row">
@@ -108,14 +113,14 @@
      // Execute on scroll
      window.addEventListener('scroll', fadeInOnScroll);
 
-     // Form submission (prevent default for demo)
-     const forms = document.querySelectorAll('form');
-     forms.forEach(form => {
-         form.addEventListener('submit', function(e) {
-             e.preventDefault();
-             alert('Form submitted successfully! This is a demo.');
-         });
-     });
+    //  // Form submission (prevent default for demo)
+    //  const forms = document.querySelectorAll('form');
+    //  forms.forEach(form => {
+    //      form.addEventListener('submit', function(e) {
+    //          e.preventDefault();
+    //          alert('Form submitted successfully! This is a demo.');
+    //      });
+    //  });
  </script>
  <script src="/js/login.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
