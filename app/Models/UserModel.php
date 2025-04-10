@@ -6,18 +6,29 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'tbl_user';  // Nama tabel
-    protected $primaryKey = 'id_user';   // Kolom primary key
-    protected $allowedFields = ['nama_user', 'email', 'password', 'foto']; // Kolom yang boleh diupdate/insert   
-    // Fungsi untuk mengambil semua data pekerjaan
+    protected $table = 'tbl_user';
+    protected $primaryKey = 'id_user';
+    protected $allowedFields = ['nama_user', 'email', 'password', 'foto'];
+    protected $returnType = 'array'; // Tambahkan ini untuk memastikan return type
+
+    // Fungsi untuk mengambil semua data user
     public function getAllData()
     {
-        return $this->orderBy('id_user', 'ASC')->findAll(); // Menggunakan findAll() yang disediakan oleh CodeIgniter Model
+        return $this->orderBy('id_user', 'ASC')->findAll();
     }
 
     public function createUser($data)
     {
-        // Memastikan data yang dimasukkan sesuai dengan allowedFields
-        return $this->insert($data);
+        // Validasi data sebelum insert
+        if (!empty($data)) {
+            return $this->insert($data);
+        }
+        return false;
+    }
+
+    // Tambahkan fungsi untuk debugging
+    public function checkTableExists()
+    {
+        return $this->db->tableExists($this->table);
     }
 }

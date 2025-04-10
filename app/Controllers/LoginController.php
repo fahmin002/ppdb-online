@@ -32,19 +32,19 @@ class LoginController extends BaseController
                     ]
                 ],
                 'password' => [
-                    'label'=> 'Password',
+                    'label' => 'Password',
                     'rules' => 'required',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong'
                     ]
                 ]
             ]
-                    );
-        if($validation->run($data)) {
+        );
+        if ($validation->run($data)) {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $cek_login = $userModel->login_user($email, $password);
-            if($cek_login) {
+            if ($cek_login) {
                 session()->set('email', $cek_login['email']);
                 session()->set('nama_user', $cek_login['nama_user']);
                 session()->set('logged_in', TRUE);
@@ -62,7 +62,7 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        if(session()->get('level') === 'admin') {
+        if (session()->get('level') === 'admin') {
             session()->remove('email');
             session()->remove('nama_user');
             session()->remove('level');
@@ -91,7 +91,7 @@ class LoginController extends BaseController
     public function userPostRegister()
     {
         $validation = \Config\Services::validation();
-    
+
         $validation->setRules([
             'nisn' => 'required',
             'jalur-masuk' => 'required|in_list[1,2,3,4]',
@@ -105,11 +105,11 @@ class LoginController extends BaseController
             'password' => 'required',
             'confirm-password' => 'required|matches[password]',
         ]);
-    
+
         if ($validation->withRequest($this->request)->run() === FALSE) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
-        
+
         // Process the registration data here
         // ...
         $nisn = $this->request->getPost('nisn');
@@ -136,20 +136,18 @@ class LoginController extends BaseController
             'nama_panggilan' => $namaPanggilan,
             'jenkel' => $jenkel === 'Laki-laki' ? 'L' : 'P',
             'tempat_lahir' => $tempatLahir,
-            'tanggal_lahir' => $tanggalLahir,
-            'bulan_lahir' => $bulanLahir,
-            'tahun_lahir' => $tahunLahir,
+            'tgl_lahir' => $tahunLahir . '-' . $bulanLahir . '-' . $tanggalLahir,
+            // 2005-12-31
             'password' => $password,
         ];
 
         try {
             $siswaModel->save($data);
-                return redirect()->to('/login')->with('message', 'Pendaftaran berhasil. Silahkan login.');
-            } catch (\Exception $e) {
-                return redirect()->back()->withInput()->with('errors', ['msg' => $e->getMessage()]);
-            }
+            return redirect()->to('/login')->with('message', 'Pendaftaran berhasil. Silahkan login.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('errors', ['msg' => $e->getMessage()]);
+        }
     }
-
     public function userPostLogin()
     {
         $siswaModel = new SiswaModel();
@@ -165,27 +163,33 @@ class LoginController extends BaseController
                     'rules' => 'required|numeric',
                     'errors' => [
                         'required' => '{field} harus diisi',
-                        'email' => 'format nsin belum valid (hanya angka)'
+                        'email' => 'format nisn belum valid (hanya angka)'
                     ]
                 ],
                 'password' => [
-                    'label'=> 'Password',
+                    'label' => 'Password',
                     'rules' => 'required',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong'
                     ]
                 ]
             ]
-                    );
-        if($validation->run($data)) {
+        );
+
+        if ($validation->run($data)) {
             $cek_login = $siswaModel->login_siswa($data['nisn'], $data['password']);
-            if($cek_login) {
-                session()->set('nama_user', $cek_login['nama_panggilan']);
-                session()->set('logged_in', TRUE);
-                session()->set('level', 'user');
+            if ($cek_login) {
+                // Simpan data siswa ke session
+                session()->set([
+                    'id_siswa' => $cek_login['id_siswa'], // Simpan id_siswa
+                    'nisn' => $cek_login['nisn'], // Simpan nisn
+                    'nama_user' => $cek_login['nama_panggilan'], // Simpan nama panggilan
+                    'logged_in' => TRUE,
+                    'level' => 'user'
+                ]);
                 return redirect()->to('/dashboard');
             } else {
-                session()->setFlashdata('errors', ['msg' => 'Nisn atau Password salah']);
+                session()->setFlashdata('errors', ['msg' => 'NISN atau Password salah']);
                 return redirect()->to('/login');
             }
         } else {

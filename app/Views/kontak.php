@@ -1,5 +1,10 @@
 <?= $this->extend('layout/user/template'); ?>
 <?= $this->section('content'); ?>
+<style>
+    .kontak {
+        color: #3498db !important;
+    }
+</style>
 <section id="kontak" class="py-5 bg-light">
         <div class="container">
             <h2 class="section-title">Hubungi Kami</h2>
@@ -40,10 +45,10 @@
                             <div class="mt-4">
                                 <h5 class="mb-2">Media Sosial</h5>
                                 <div class="d-flex">
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                    <a href="#" class="social-icon kontak me-2"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-icon kontak me-2"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon kontak me-2"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-icon kontak"><i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -1,21 +1,21 @@
 <?= $this->extend('layout/user/template') ?>
 <?= $this->section('content') ?>
-    <!-- Tentang Sekolah Section -->
-    <section id="tentang" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Tentang SMP PGRI 1 Puring</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://lh5.googleusercontent.com/p/AF1QipOPCyIScfHMKxg_a0qixi6yBvX_r5SYMxRqyy7x=w408-h306-k-no" alt="placeholder" class="img-fluid rounded-3 shadow">
-                </div>
-                <div class="col-lg-6">
-                    <p class="mb-4">SMP PGRI 1 Puring merupakan lembaga pendidikan yang berdiri sejak tahun 1987 dengan visi menjadi institusi pendidikan unggulan yang menghasilkan generasi berkarakter, berintegritas, dan berdaya saing global.</p>
-                    <p class="mb-4">Dengan fasilitas modern dan tenaga pengajar berkualitas, kami berkomitmen memberikan pendidikan terbaik untuk mengembangkan potensi akademik dan non-akademik setiap siswa.</p>
-                </div>
+<!-- Tentang Sekolah Section -->
+<section id="tentang" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Tentang SMP PGRI 1 Puring</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://lh5.googleusercontent.com/p/AF1QipOPCyIScfHMKxg_a0qixi6yBvX_r5SYMxRqyy7x=w408-h306-k-no" alt="placeholder" class="img-fluid rounded-3 shadow">
+            </div>
+            <div class="col-lg-6">
+                <p class="mb-4">SMP PGRI 1 Puring merupakan lembaga pendidikan yang berdiri sejak tahun 1987 dengan visi menjadi institusi pendidikan unggulan yang menghasilkan generasi berkarakter, berintegritas, dan berdaya saing global.</p>
+                <p class="mb-4">Dengan fasilitas modern dan tenaga pengajar berkualitas, kami berkomitmen memberikan pendidikan terbaik untuk mengembangkan potensi akademik dan non-akademik setiap siswa.</p>
             </div>
         </div>
-    </section>
-    <section class="py-5">
+    </div>
+</section>
+<section class="py-5">
     <div class="container">
         <h2 class="section-title">Testimoni Siswa</h2>
         <div class="row">
@@ -84,6 +84,7 @@
                     </div>
                 </div>
             </div>
+                <iframe class="mt-md-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.7471290871777!2d109.52432750000001!3d-7.734621199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65348b26597d97%3A0x6203a5c6282278a5!2sSMP%20PGRI%201%20PURING!5e1!3m2!1sid!2sid!4v1744035057045!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>

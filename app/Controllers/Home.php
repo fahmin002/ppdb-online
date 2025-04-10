@@ -47,4 +47,12 @@ class Home extends BaseController
         ];
         return view('kontak', $data);
     }
+
+    public function ppdb()
+    {
+        $data = [
+            "page" => "ppdb"
+        ];
+        return view('ppdb', $data);
+    }
 }

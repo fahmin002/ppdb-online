@@ -55,19 +55,44 @@ $routes->get('/admin/adduser', 'UserController::index', ['filter' => 'UserFilter
 $routes->get('/admin/detailuser/(:segment)', 'AddUserController::detail/$1', ['filter' => 'UserFilter']);
 
 $routes->post('/admin/adduser/store', 'UserController::store', ['filter' => 'UserFilter']);
-$routes->put('/User/update/(:num)', 'UserController::update/$1');
+$routes->put('/user/update/(:num)', 'UserController::update/$1');
 $routes->delete('/user/delete/(:num)', 'UserController::delete/$1',  ['filter' => 'UserFilter']);
 
 // Lampiran
 $routes->get('/admin/lampiran', 'LampiranController::index', ['filter' => 'UserFilter']);
+$routes->get('/admin/lampiran/(:num)', 'LampiranController::view/$1',  ['filter' => 'UserFilter']);
 $routes->post('/lampiran/upload', 'LampiranController::upload', ['filter' => 'UserFilter']);
 $routes->put('/lampiran/update/(:num)', 'LampiranController::update/$1');
 $routes->delete('/lampiran/delete/(:num)', 'LampiranController::delete/$1', ['filter' => 'UserFilter']);
+
+// Status Pendaftaran PPDB
+$routes->get('/admin/pendaftaran/masuk', 'PendaftaranController::getSiswamasuk', ['filter'=> 'UserFilter']);
+$routes->get('/admin/pendaftaran/diterima', 'PendaftaranController::getSiswaditerima', ['filter'=> 'UserFilter']);
+$routes->get('/admin/pendaftaran/ditolak', 'PendaftaranController::getSiswaDitolak', ['filter'=> 'UserFilter']);
+$routes->get('/admin/pendaftaran/(:num)', 'PendaftaranController::getDetailSiswa/$1', ['filter', 'UserFilter']);
+// Ubah Status
+$routes->get('/admin/pendaftaran/verify/(:num)', 'PendaftaranController::verify/$1', ['filter' => 'UserFilter']);
+$routes->get('/admin/pendaftaran/reject/(:num)', 'PendaftaranController::reject/$1', ['filter' => 'UserFilter']);
+$routes->get('/admin/pendaftaran/pending/(:num)', 'PendaftaranController::pending/$1', ['filter' => 'UserFilter']);
 
 // // User
 $routes->get('/tentang', 'Home::tentang');
 $routes->get('/prestasi', 'Home::prestasi');
 $routes->get('/kegiatan', 'Home::kegiatan');
 $routes->get('/galeri', 'Home::galeri');
-$routes->get('/jadwal', 'Home::jadwal');
+$routes->get('/ppdb', 'Home::ppdb');
 $routes->get('/kontak', 'Home::kontak');
+$routes->get('/user/editeprofile/(:any)', 'SiswaController::editProfile/$1', ['filter' => 'UserFilter']);
+$routes->post('/user/updateProfile/(:num)', 'SiswaController::updateProfile/$1');
+
+// Menampilkan form upload lampiran
+$routes->get('/user/uploads', 'UserLampiranController::index');
+
+// Menangani proses upload lampiran
+$routes->post('/user/uploads', 'UserLampiranController::upload');
+
+// Bukti Pendaftaran
+$routes->get('/user/buktipendaftaran/(:num)', 'BuktiPendaftaranController::index/$1');
+$routes->get('/user/buktipendaftaran/generatePdf/(:num)', 'BuktiPendaftaranController::generatePdf/$1');
+
+

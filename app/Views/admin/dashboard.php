@@ -1,104 +1,356 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- app/Views/admin/dashboard.php -->
+<?= $this->extend('layout/admin/template') ?>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Dashboard - SB Admin</title>
-  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-  <link href="/css/styles.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
+<?= $this->section('content') ?>
+<div class="container-fluid">
 
-<body class="sb-nav-fixed">
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">PPDB Online</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Settings</a></li>
-          <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-            <a class="nav-link" href="index.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Dashboard
-            </a>
-            <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Master Data
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="/admin/lampiran">Lampiran</a>
-                <a class="nav-link" href="/admin/pekerjaan">Pekerjaan</a>
-                <a class="nav-link" href="/admin/pendidikan">Pendidikan</a>
-                <a class="nav-link" href="/admin/agama">Agama</a>
-                <a class="nav-link" href="/admin/penghasilan">Penghasilan</a>
-                <a class="nav-link" href="/admin/adduser">User</a>
-              </nav>
+    <h2 class="h3 mb-4 text-gray-800 mt-4">Halo Selamat Datang, <?php if (!empty($admins)): ?>
+            <?= esc($admins[0]['nama_user']) ?>
+        <?php else: ?>
+            <p>Tidak ada data admin</p>
+        <?php endif; ?>
+    </h2>
+
+    <!-- Cards Summary -->
+    <div class="row">
+        <!-- Total Siswa Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Siswa Pendaftar</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalSiswa ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-              Pendaftaran
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="login.html">Masuk</a>
-                <a class="nav-link" href="register.html">Diterima</a>
-                <a class="nav-link" href="password.html">Ditolak</a>
-              </nav>
-            </div>
-            <!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
-          </div>
         </div>
-        <div class="sb-sidenav-footer">
-          <div class="small">Logged in as: <?= session()->get('nama_user') ?></div>
-          PPBD Online
-        </div>
-      </nav>
-    </div>
-    <div id="layoutSidenav_content">
-      <?= $this->renderSection('content'); ?>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="/js/scripts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-  <script src="/assets/demo/chart-area-demo.js"></script>
-  <script src="/assets/demo/chart-bar-demo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-  <script src="/js/datatables-simple-demo.js"></script>
-</body>
 
-</html>
+        <!-- Siswa Laki-laki Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Siswa Laki-laki</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $siswaLaki ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-male fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Siswa Perempuan Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Siswa Perempuan</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $siswaPerempuan ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-female fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Diterima Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Siswa Diterima</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusPPDB['verified'] ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+        <!-- Pie Chart - Jalur Masuk -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Distribusi Jalur Masuk</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie">
+                        <canvas id="pieJalurMasuk"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <?php foreach ($jalurOptions as $key => $value): ?>
+                            <span class="mr-2">
+                                <i class="fas fa-circle" style="color: <?= getChartColor($key) ?>"></i> <?= $value ?>
+                            </span>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bar Chart - Pendaftaran per Tahun -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Pendaftaran per Tahun</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="barTahunPendaftaran"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Pie Chart - Status PPDB -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Status PPDB</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie">
+                        <canvas id="pieStatusPPDB"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-warning"></i> Pending
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-success"></i> Verified
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-danger"></i> Rejected
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Doughnut Chart - Gender Distribution -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Distribusi Gender</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie">
+                        <canvas id="doughnutGender"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i> Laki-laki
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-danger"></i> Perempuan
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Helper function untuk warna chart -->
+<?php
+function getChartColor($index)
+{
+    $colors = ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#5a5c69', '#6f42c1', '#20c9a6'];
+    return $colors[$index % count($colors)];
+}
+?>
+
+<!-- ChartJS Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Chart Jalur Masuk
+        var ctxJalurMasuk = document.getElementById('pieJalurMasuk').getContext('2d');
+        var pieJalurMasuk = new Chart(ctxJalurMasuk, {
+            type: 'pie',
+            data: {
+                labels: <?= $labelsJalur ?>,
+                datasets: [{
+                    data: <?= $dataJalur ?>,
+                    backgroundColor: [
+                        '#4e73df',
+                        '#1cc88a',
+                        '#36b9cc',
+                        '#f6c23e',
+                        '#e74a3b',
+                        '#5a5c69'
+                    ],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 0,
+            },
+        });
+
+        // Chart Pendaftaran per Tahun
+        var ctxTahun = document.getElementById('barTahunPendaftaran').getContext('2d');
+        var barTahun = new Chart(ctxTahun, {
+            type: 'bar',
+            data: {
+                labels: <?= $labelsTahun ?>,
+                datasets: [{
+                    label: "Jumlah Pendaftar",
+                    backgroundColor: "#4e73df",
+                    hoverBackgroundColor: "#2e59d9",
+                    borderColor: "#4e73df",
+                    data: <?= $dataTahun ?>,
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        maxBarThickness: 25,
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            maxTicksLimit: 5,
+                            padding: 10,
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }],
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    titleMarginBottom: 10,
+                    titleFontColor: '#6e707e',
+                    titleFontSize: 14,
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+            }
+        });
+
+        // Chart Status PPDB
+        var ctxStatusPPDB = document.getElementById('pieStatusPPDB').getContext('2d');
+        var pieStatusPPDB = new Chart(ctxStatusPPDB, {
+            type: 'pie',
+            data: {
+                labels: ['Pending', 'Verified', 'Rejected'],
+                datasets: [{
+                    data: [
+                        <?= $statusPPDB['pending'] ?>,
+                        <?= $statusPPDB['verified'] ?>,
+                        <?= $statusPPDB['rejected'] ?>
+                    ],
+                    backgroundColor: ['#f6c23e', '#1cc88a', '#e74a3b'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+            },
+        });
+
+        // Chart Gender Distribution
+        var ctxGender = document.getElementById('doughnutGender').getContext('2d');
+        var doughnutGender = new Chart(ctxGender, {
+            type: 'doughnut',
+            data: {
+                labels: ['Laki-laki', 'Perempuan'],
+                datasets: [{
+                    data: [<?= $siswaLaki ?>, <?= $siswaPerempuan ?>],
+                    backgroundColor: ['#4e73df', '#e74a3b'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 50,
+            },
+        });
+    });
+</script>
+<?= $this->endSection() ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 16, 2025 at 05:21 PM
+-- Generation Time: Mar 20, 2025 at 10:08 AM
 -- Server version: 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -29,24 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `lampiran` (
   `id_lampiran` int(11) NOT NULL,
-  `id_pendaftar` int(11) NOT NULL,
-  `jenis_lampiran` varchar(100) NOT NULL,
+  `no_pendaftaran` varchar(20) NOT NULL,
   `file_lampiran` varchar(255) NOT NULL,
-  `keterangan` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `lampiran`
---
-
-INSERT INTO `lampiran` (`id_lampiran`, `id_pendaftar`, `jenis_lampiran`, `file_lampiran`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Kartu Keluarga', '1742016887_3f88e77a37ac2c27aecf.pdf', 'bubi', '2025-03-14 19:49:03', '2025-03-15 05:34:47'),
-(2, 1, 'Kartu Keluarga', '1742016398_e1189b8809892f267af0.pdf', 'bbbbb', '2025-03-14 19:49:03', '2025-03-15 05:26:39'),
-(3, 2, 'Ijazah', 'ijazah-2.pdf', 'Scan warna', '2025-03-14 19:49:03', '2025-03-14 19:49:03'),
-(4, 2, 'Kartu Keluarga', '1741984455_1ea71924bac72566ee71.pdf', 'bbbbb', '2025-03-14 20:34:16', '2025-03-14 20:34:16'),
-(6, 2, 'Kartu Keluarga', '1742017240_0725f87b8fe330c1392a.pdf', 'hahah\r\n', '2025-03-15 05:40:40', '2025-03-15 05:40:40');
 
 -- --------------------------------------------------------
 
